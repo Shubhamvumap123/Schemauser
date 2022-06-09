@@ -72,7 +72,9 @@ const User = () => {
           Submit
         </button>
       </form>
-      <div>{}</div>
+      <div>
+        
+      </div>
     </div>
   );
 };
