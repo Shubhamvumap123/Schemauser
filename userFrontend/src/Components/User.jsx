@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {Link,Navigate} from 'react-router-dom'
 import axios from 'axios'
-const User = () => {
+const User = ({getdata}) => {
   const [showdata,setshowdata]=useState([]);
 
   let fetchData = () => {
@@ -15,6 +15,13 @@ const User = () => {
   useEffect (() =>{
 fetchData();
   },[])
+  const handleData = () =>{
+
+    if(id){
+      Navigate("/user/:id");
+    }
+  }
+
   // fetchData();
  console.log(showdata);
   return (
@@ -60,7 +67,8 @@ fetchData();
                     {value.address[0].type}
                   </td>
                   <td style={{ border: "1px solid" }}>
-                    <Link to="/user/:id">UserID</Link>
+                    {/* <button onclick={handleData}>UserId</button> */}
+                    <Link to={`/user/${value._id}`}>UserID</Link>
                   </td>
                   <td style={{ border: "1px solid" }}>
                     <Link to="/users/:id/edit">IDEDIT</Link>
