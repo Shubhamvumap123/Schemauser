@@ -1,12 +1,14 @@
 
 const express = require("express");
 const cors = require("cors");
-const userController = require("./controller/userController")
+const userController = require("./controller/userController");
+const brandController = require("./controller/BrandController");
+const productController = require("./controller/ProductController");
 var app = express();
-
-
-app.use(cors());
 app.use(express.json());
+app.use(cors()); 
 
 app.use("/users", userController);
+app.use("/product", productController);
+app.use("/brand", brandController);
 module.exports=app

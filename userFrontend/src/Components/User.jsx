@@ -15,12 +15,6 @@ const User = ({getdata}) => {
   useEffect (() =>{
 fetchData();
   },[])
-  const handleData = () =>{
-
-    if(id){
-      Navigate("/user/:id");
-    }
-  }
 
   // fetchData();
  console.log(showdata);

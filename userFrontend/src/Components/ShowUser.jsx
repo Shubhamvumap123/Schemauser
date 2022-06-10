@@ -1,29 +1,67 @@
-import axios from 'axios';
-import React from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { Routes, Route, useParams} from 'react-router-dom';
+
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
-const ShowUser = () => {
+function ShowUser () {
+    var arr = [];
+  const [posts, setPosts] = useState([]);
 
-let [searchParams, setSearchParams] = useSearchParams();
+  const { id } = useParams();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/users/${id}`)
+      .then((res) => {
+        setPosts(res.data);
+        arr.push(posts);
+      })
+      
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-let {userID} = useParams();
-
-// let getData = ({getdata})=>{
-//     axios.get("http://localhost:5000/users/?`${id}`")
-//     .then((res)=>{
-//         setSearchParams(res.data)
-//     })
-
-// }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>{/* ... */}</form>
-      <div>{searchParams.name}</div>
+      <table style={{ border: "1px solid" }}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Line1</th>
+            <th>Line2</th>
+            <th>Contry</th>
+            <th>City</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {arr.map((value, key) => {
+            return (
+              <tr key={key}>
+                <td style={{ border: "1px solid" }}>{value.name}</td>
+                <td style={{ border: "1px solid" }}>{value.age}</td>
+                <td style={{ border: "1px solid" }}>
+                  {value.address[0].line1}
+                </td>
+                <td style={{ border: "1px solid" }}>
+                  {value.address[0].line2}
+                </td>
+                <td style={{ border: "1px solid" }}>
+                  {value.address[0].contry}
+                </td>
+                <td style={{ border: "1px solid" }}>{value.address[0].city}</td>
+                <td style={{ border: "1px solid" }}>{value.address[0].type}</td>
+               
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default ShowUser
+export default ShowUser;

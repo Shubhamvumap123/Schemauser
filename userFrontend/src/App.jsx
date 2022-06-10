@@ -15,8 +15,8 @@ function App() {
         <Route exact path="/" component={<Home />} />
         <Route exact path="/users" element={<User />} />
         <Route exact path="/users/create" element={<CreateUser />} />
-        <Route exact path="/user/:id" component={<ShowUser />} />
-        <Route exact path="/users/:id/edit" component={<EditUser />} />
+        <Route exact path="/user/:id" element={<ShowUser />} />
+        <Route exact path="/users/:id/edit" element={<EditUser />} />
         <Route />
       </Routes>
     </div>
