@@ -15,9 +15,18 @@ router.post("/create", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const product = await Product.find().populate("categoryId").lean().exec();
-
-    return res.status(200).send(product);
+    // const product = await Product.find().lean().exec();
+    // return res.status(200).send(product);
+    // const product = await Product.aggregate([
+    //   {
+    //     $match: {
+    //       productName: "Rowe LLC",
+    //     },
+    //   },
+    // ]);
+    const product = await Product.findOne({ productName: "Sagar" });
+    console.log(product)
+    return res.send(product);
   } catch (err) {
     return res.status(400).send({ message: err.message });
   }

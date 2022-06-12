@@ -2,20 +2,17 @@ const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema(
   {
-   
-    productName: { type: String, required: true },
-    productBrand: { type: String, required: false },
-    categoryId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "category",
-      required: false,
-    },
+    id: { type: Number, required:false },
+    productName: { type: String, required: false },
+    productPrice: { type: Number, required: false },
+    productquantity: { type: Number, required: false },
+    productdate:{type: String, required: false}
   },
   {
     timestamps: true,
     versionKey: false,
   }
 );
-const product = mongoose.model("ecommerceProduct", ProductSchema);
+const product = mongoose.model("product", ProductSchema);
 
 module.exports = product;

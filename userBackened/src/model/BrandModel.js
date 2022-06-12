@@ -6,7 +6,7 @@ const BrandSchema = new mongoose.Schema(
     product: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "ecommerceProduct",
+        ref: "products",
         required: true,
       },
     ],
