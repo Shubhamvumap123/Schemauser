@@ -4,10 +4,7 @@ const Order = require("../model/OrderModel");
 router.get("/", async (req, res) => {
     
   try {
-    const order = await Order.find({ firstuser: "name" })
-      .lean()
-      .exec()
-      .populate("firstuser");
+    const order = await Order.find({ firstuser: "name" }).populate("firstuser");
     res.status(200).send(order);
   } catch (error) {
     console.log("error", error);
