@@ -5,7 +5,6 @@ router.get("/", async (req, res) => {
     
   try {
     const order = await Order.find({ firstuser: "name" })
-      
       .lean()
       .exec()
       .populate("firstuser");
