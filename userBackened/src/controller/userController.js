@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/userModel')
+
 router.get("/",async(req,res) =>{
     try {
         const users = await User.find().lean().exec();
@@ -11,12 +12,14 @@ router.get("/",async(req,res) =>{
 });
 
 router.post("/create",async(req,res) =>{
+
     try {
         const user = await User.create(req.body);
         return res.status(201).send(user)
     } catch (error) {
         console.log("errror",error);
     }
+    
 })
 
 router.get("/:id",async(req,res)=>{

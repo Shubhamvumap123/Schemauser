@@ -12,6 +12,7 @@ router.post("/create", async (req, res, next) => {
   }
 });
 
+
 router.get("/", async (req, res) => {
   try {
     const brands = await Brand.find().populate("product").lean().exec();
@@ -20,6 +21,7 @@ router.get("/", async (req, res) => {
     return res.status(400).send({ message: err.message });
   }
 });
+
 
 router.get("/:id", async (req, res) => {
   try {
