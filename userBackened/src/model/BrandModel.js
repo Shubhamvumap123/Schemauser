@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const BrandSchema = new mongoose.Schema(
   {
     brand: { type: String, required: true },
-    product: [
+    product:
+     [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "products",

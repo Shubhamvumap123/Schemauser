@@ -18,6 +18,6 @@ const ProductSchema = new mongoose.Schema(
     versionKey: false,
   }
 );
-const product = mongoose.model("category", ProductSchema);
+const product = mongoose.model("list", ProductSchema);
 
 module.exports = product;
